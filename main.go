@@ -1,11 +1,26 @@
 package main 
 
 import (
+	"fmt"
+	_ "quan/config"
+	_ "quan/trace_ctl"
 	"quan/trx"
 )
 
-func main() {
-	var market = trx.CoinexMarket{}
+func StartTrade(){
+	var h trx.Hedging
 
-	market.GetMarketList()
+	h.Hedge()
+}
+
+func main() {
+	var message chan string = make(chan string)
+	go func(){
+		for{
+			StartTrade()
+		}
+
+		message <- "finish"
+	}()	
+	fmt.Println(<-message)
 }
