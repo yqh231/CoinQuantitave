@@ -3,8 +3,8 @@ package trx
 import (
 	"fmt"
 	conf "quan/config"
+	"strings"
 	//mgo "quan/trace_ctl"
-	huobi "github.com/huobiapi/REST-GO-demo/services"
 	"github.com/shopspring/decimal"
 )
 
@@ -27,21 +27,22 @@ func getServiceCharge(market string, prices ...decimal.Decimal) decimal.Decimal{
 
 func(h *Hedging) Hedge() {
 	m := CoinexMarket{}
+	huobi := HuobiMarket{}
 
 	for _, market := range conf.TrxMarketType{
 		coinEx := m.GetMarketTicker(market)
-		huoBi := huobi.GetTradeDetail(market)
-
-		coinExPrice, _ := decimal.NewFromString((*coinEx)["latest"])
-		huoBiPrice := decimal.NewFromFloat(huoBi.Tick.Data[0].Price)
-		
+		huoBi := huobi.GetHuobiMarketDetail(strings.ToLower(market))
+		coinExPrice, _ := decimal.NewFromString((*coinEx)["last"])
+		huoBiPrice := decimal.NewFromFloat((*huoBi).Tick.Close)
 		if coinExPrice.Cmp(huoBiPrice) == -1{
 			diffValue := huoBiPrice.Sub(coinExPrice)
+			fmt.Println(diffValue)
 			if diffValue.GreaterThan(getServiceCharge(market, coinExPrice, huoBiPrice)) {
 				//trade
 			}
 		}else if coinExPrice.Cmp(huoBiPrice) == 1{
 			diffValue := coinExPrice.Sub(huoBiPrice)
+			fmt.Println(diffValue)
 			if diffValue.GreaterThan(getServiceCharge(market, coinExPrice, huoBiPrice)){
 				//trade
 			}

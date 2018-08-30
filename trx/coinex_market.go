@@ -45,7 +45,6 @@ func(m *CoinexMarket) GetMarketTicker(marketType string) *map[string]string{
 		marketTicker[string(key)] = string(value)
 		return nil
 	}, "data", "ticker")
-
 	return &marketTicker
 	}
 
