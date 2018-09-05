@@ -7,4 +7,4 @@ Trading robot for digital currency, it can automated buy coin from low price pla
 Now, we support CoinEx and HuobiPro. More platform will be plugged into soon.
 
 ## Licence
-MIT. See [LICENSE](./LICENSE).
+Apache-2.0. See [LICENSE](./LICENSE).
