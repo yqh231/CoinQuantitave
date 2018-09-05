@@ -1,0 +1,11 @@
+1. implement platform api
+2. trading logic
+3. run mock data
+4. push data into mongodb
+5. deploy the application into the production runtime environment
+
+How to mock data?
+    Suppose, we are woring on ETHBTC transaction pair.We own 50 ETH 
+on A platform and 8BTC on B platform.If price on A is higher than B,
+plus transaction fee, it's time to trade.Then we get market deep on both
+platfroms,choose the intersection amount to sell on A and buy on B.
