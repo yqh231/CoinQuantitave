@@ -4,6 +4,7 @@
 *.dll
 *.so
 *.dylib
+*.pyc
 
 # Test binary, build with `go test -c`
 *.test
@@ -13,3 +14,7 @@
 
 # Config files
 *.ini
+
+# venv files
+venv/*
+.idea/*
