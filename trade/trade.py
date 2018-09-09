@@ -32,7 +32,6 @@ class TradeSvr(CoinExClient, HuoBiClient):
 
             huobi_depth_1_price = Decimal(huobi_depth['tick']['asks'][0][0])
             huobi_depth_1_amount = Decimal(huobi_depth['tick']['asks'][0][1])
-            print(huobi_depth_1_price, coinex_depth_1_price)
             if huobi_depth_1_price - coinex_depth_1_price > huobi_depth_1_price * Decimal(0.002 + 0.003):
                 trade_amount = min(coinex_depth_1_amount, huobi_depth_1_amount)
                 now = datetime.now()
@@ -43,7 +42,6 @@ class TradeSvr(CoinExClient, HuoBiClient):
                     'update_time': now,
                     'create_time': now
                 })
-                print('time to trade {}'.format(str(now)))
                 
                
 

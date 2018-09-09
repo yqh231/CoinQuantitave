@@ -1,3 +1,5 @@
 from pymongo import MongoClient
 
-mgo = MongoClient('mongodb://yqhdev:27000/')
+from config import conf
+
+mgo = MongoClient('mongodb://{}:{}/'.format(conf.host, conf.port))
