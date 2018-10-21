@@ -1,13 +1,18 @@
 import time
 
-from trade.trade import TradeSvr
+from trade.turtule_monitor import Turtle 
+
+ONE_HOUR = 60 * 60
 
 
 def main():
-    trade_srv = TradeSvr()
+    turtle = Turtle()
     while True:
-        trade_srv.run()
-        time.sleep(1)
+        try:
+            turtle.run()
+            time.sleep(ONE_HOUR)
+        except Exception as e:
+            print(str(e))
 
 
 if __name__ == "__main__":

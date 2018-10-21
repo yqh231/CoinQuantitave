@@ -10,3 +10,4 @@ class CoinExClient(Client):
     def get_ticker(self, params):
         url = " https://api.coinex.com/v1/market/ticker"
         return self.get(url, params)
+

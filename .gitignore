@@ -18,3 +18,8 @@
 # venv files
 venv/*
 .idea/*
+config/*
+*.vscode/
+test.py
+supervisord.log
+supervisord.pid

@@ -44,10 +44,3 @@ class TradeSvr(CoinExClient, HuoBiClient):
                     'create_time': now
                 })
                 print('time to trade {}'.format(str(now)))
-                
-               
-
-        
-
-            
-
