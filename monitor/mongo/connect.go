@@ -35,3 +35,7 @@ func (mgo *MongoManager) Use(collection string) *mongo.Collection{
 	}
 	return c
 }
+
+func init(){
+	New()
+}
