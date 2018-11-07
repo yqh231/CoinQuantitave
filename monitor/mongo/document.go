@@ -4,7 +4,7 @@ import(
 	"github.com/mongodb/mongo-go-driver/bson"
 )
 
-func makeDoc(doc []map[string]interface{}) *bson.Document{
+func MakeDoc(doc []map[string]interface{}) *bson.Document{
 	inter := new(bson.ElementConstructor)
 	var el_array []*bson.Element
 	for _, m := range doc{

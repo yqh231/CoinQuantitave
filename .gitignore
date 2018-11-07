@@ -21,5 +21,7 @@ venv/*
 config/*
 *.vscode/
 test.py
+*.log
+*.sh
 supervisord.log
 supervisord.pid

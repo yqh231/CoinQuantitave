@@ -28,3 +28,15 @@ func AddStr(a, b string) string{
 
 	return decimal_a.Add(decimal_b).String()
 }
+
+//Max string
+func MaxStr(first string, rest...string) string{
+	cotainer := make([]decimal.Decimal,1)
+	decimal_f, _ := decimal.NewFromString(first)
+	for _, r := range rest{
+		decimal_r, _ := decimal.NewFromString(r)
+		cotainer = append(cotainer, decimal_r)
+	}
+	max := decimal.Max(decimal_f, cotainer...)
+	return max.String()
+}

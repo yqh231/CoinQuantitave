@@ -5,16 +5,16 @@ import(
 	"fmt"
 )
 
-/*func TestInsert(t *testing.T){
-	cases := []string{"BCH", "ETH", "BTC", "EOS"}
+func TestInsert(t *testing.T){
+	cases := []string{"bch_usdt", "eth_usdt", "btc_usdt", "eos_usdt"}
 	for _, c := range cases{
-		CoinInsertOne(c)
+		MarketInsertOne(c)
 	}
-}*/
+}
 
 func TestMarketAll(t *testing.T){
 	coins := MarketAll()
 	for _, coin := range coins{
-		fmt.Println(coin.Lookup("coin").StringValue())
+		fmt.Println(coin.Lookup("market").StringValue())
 	}
 }

@@ -18,5 +18,5 @@ func TestBpInsert(t *testing.T){
 
 func TestFilterBp(t *testing.T){
 	FilterBp(nil)
-	FilterBp(makeDoc([]map[string]interface{}{{"market": "bch_usdt"}}))
+	FilterBp(MakeDoc([]map[string]interface{}{{"market": "bch_usdt"}}))
 }

@@ -12,18 +12,18 @@ import (
 	"github.com/mongodb/mongo-go-driver/bson"
 )
 
-const market = "market"
+const market_ = "market"
 
 func MarketInsertOne(market string){
-	c := Mgo.Use(market)
-	_, err := c.InsertOne(context.Background(), makeDoc([]map[string]interface{}{{"market": market}}))
+	c := Mgo.Use(market_)
+	_, err := c.InsertOne(context.Background(), MakeDoc([]map[string]interface{}{{"market": market}}))
 	if err != nil{
 		//to do
 	}
 }
 
 func MarketAll() (r []*bson.Document){
-	c := Mgo.Use(market)
+	c := Mgo.Use(market_)
 
 	cur, _ := c.Find(context.Background(), nil)
 	defer cur.Close(context.Background())

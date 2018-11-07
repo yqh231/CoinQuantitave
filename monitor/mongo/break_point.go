@@ -15,6 +15,7 @@ import (
 	"context"
 	"github.com/mongodb/mongo-go-driver/bson"
 	"time"
+	l "github.com/yqh231/CoinQuantitave/monitor/log"
 )
 
 const breakPoint = "break_point"
@@ -28,9 +29,9 @@ func BpInsertOne(market, cur, top string, bp bool){
 		{"market": market},
 		{"create_time": time.Now().Unix()},
 	}
-	_, err := c.InsertOne(context.Background(), makeDoc(doc))
+	_, err := c.InsertOne(context.Background(), MakeDoc(doc))
 	if err != nil{
-		//to do
+		l.Logger.Println(err.Error())
 	}
 }
 
