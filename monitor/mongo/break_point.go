@@ -39,7 +39,11 @@ func FilterBp(filter *bson.Document) (r []*bson.Document){
 	c := Mgo.Use(breakPoint)
 
 	cur, _ := c.Find(context.Background(), filter)
-	defer cur.Close(context.Background())
+	defer func(){
+		if cur != nil{
+			cur.Close(context.Background())
+		}
+	}()
 	for cur.Next(context.Background()){
 		doc := bson.NewDocument()
 		cur.Decode(doc)

@@ -30,6 +30,9 @@ func breakPoint(c *gin.Context){
 		filters = append(filters, map[string]interface{}{"break_point": true})
 	}
 	bp := mongo.FilterBp(mongo.MakeDoc(filters))
+	if bp == nil{
+		c.JSON(http.StatusOK, ResOk("no data"))	
+	}
 	for i, r := range bp{
 		if i < int(offset){
 			continue
@@ -48,5 +51,5 @@ func breakPoint(c *gin.Context){
 		return results[i].CreateTime > results[j].CreateTime
 	})
 
-	c.JSON(http.StatusOK, results)
+	c.JSON(http.StatusOK, ResOk(results))
 }

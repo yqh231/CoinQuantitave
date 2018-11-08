@@ -3,7 +3,7 @@ package mongo
 db design
 {
 	"_id": ObjectId(),
-	"coin": "BTC"
+	"market": "btc_usdt"
 }
 
 */
