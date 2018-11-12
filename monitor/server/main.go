@@ -6,7 +6,6 @@ import (
 
 func setupRouter() *gin.Engine{
 	router := gin.Default()
-	router.LoadHTMLGlob("templates/*")
 
 	market := router.Group("/market")
 	{
@@ -14,10 +13,6 @@ func setupRouter() *gin.Engine{
 		market.PUT("/bp", addMarket)
 	}
 
-	templates := router.Group("/")
-	{
-		templates.GET("", base)
-	}
 	return router
 }
 
