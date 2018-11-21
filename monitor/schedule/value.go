@@ -6,13 +6,13 @@ import (
 	"strconv"
 )
 
-func topPrice(market string) string{
+func Price(market string) (string, string){
 	var container []string
 	kline := zb.Kline(market, "1day", "10")
 	for _, data := range *kline.Data{
 		container = append(container, strconv.FormatFloat(data[2], 'f', -1, 64))
 	}
-	return decimal.MaxStr("0", container...)
+	return decimal.MaxStr("0", container...), decimal.MinStr("0", container...)
 }
 
 func curPrice(market string) string{

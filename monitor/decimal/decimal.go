@@ -40,3 +40,15 @@ func MaxStr(first string, rest...string) string{
 	max := decimal.Max(decimal_f, cotainer...)
 	return max.String()
 }
+
+//Min string
+func MinStr(first string, rest...string) string{
+	cotainer := make([]decimal.Decimal,1)
+	decimal_f, _ := decimal.NewFromString(first)
+	for _, r := range rest{
+		decimal_r, _ := decimal.NewFromString(r)
+		cotainer = append(cotainer, decimal_r)
+	}
+	min := decimal.Min(decimal_f, cotainer...)
+	return min.String()
+}

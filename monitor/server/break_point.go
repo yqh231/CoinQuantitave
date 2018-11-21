@@ -12,12 +12,13 @@ type Bp struct{
 	TopPrice string
 	Market string
 	CreateTime string
+	Flag bool 
 }
 
 func breakPoint(c *gin.Context){
 	market := c.DefaultQuery("market", "")
 	flag := str2int64(c.DefaultQuery("flag", "0"))
-	limit := str2int64(c.DefaultQuery("limit", "50"))
+	limit := str2int64(c.DefaultQuery("limit", "20"))
 	offset := str2int64(c.DefaultQuery("offset", "0"))
 
 	var filters []map[string]interface{}
@@ -37,7 +38,7 @@ func breakPoint(c *gin.Context){
 		if i < int(offset){
 			continue
 		}
-		if len(results) > int(limit){
+		if len(results) >= int(limit){
 			continue
 		}
 		results = append(results, Bp{
@@ -45,6 +46,7 @@ func breakPoint(c *gin.Context){
 			TopPrice: r.Lookup("top_price").StringValue(),
 			Market: r.Lookup("market").StringValue(),
 			CreateTime: timestamp2time(r.Lookup("create_time").Int64()),
+			Flag: r.Lookup("break_point").Boolean(),
 		})
 	}
 	sort.SliceStable(results, func(i, j int)bool{

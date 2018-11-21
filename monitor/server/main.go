@@ -10,7 +10,8 @@ func setupRouter() *gin.Engine{
 	market := router.Group("/market")
 	{
 		market.GET("/bp", breakPoint)
-		market.PUT("/bp", addMarket)
+		market.GET("/list", listMarket)
+		market.POST("/add", addMarket)
 	}
 
 	return router
