@@ -5,7 +5,7 @@ import(
 
 	"github.com/yqh231/CoinQuantitave/monitor/decimal"
 	"github.com/yqh231/CoinQuantitave/monitor/mongo"
-	"github.com/yqh231/CoinQUantitave/monitor/sms"
+	"github.com/yqh231/CoinQuantitave/monitor/sms"
 )
 
 
