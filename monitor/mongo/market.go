@@ -26,7 +26,6 @@ func MarketAll() (r []*bson.Document){
 	c := Mgo.Use(market_)
 
 	cur, _ := c.Find(context.Background(), nil)
-	defer cur.Close(context.Background())
 	for cur.Next(context.Background()){
 		doc := bson.NewDocument()
 		cur.Decode(doc)
